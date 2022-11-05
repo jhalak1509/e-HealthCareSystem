@@ -15,9 +15,13 @@ public class Hospital {
     private String hospitalCommunity;
     private String hospitalCity;
     private String hospitalState;
+    
+    static int count = 0;
 
-    public Hospital(int hospitalId, String hospitalName, String hospitalCommunity, String hospitalCity, String hospitalState) {
-        this.hospitalId = hospitalId;
+    public Hospital(String hospitalName, String hospitalCommunity, String hospitalCity, String hospitalState) {
+        
+        count++;
+        this.hospitalId = count;
         this.hospitalName = hospitalName;
         this.hospitalCommunity = hospitalCommunity;
         this.hospitalCity = hospitalCity;

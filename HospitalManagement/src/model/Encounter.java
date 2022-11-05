@@ -83,5 +83,8 @@ public class Encounter {
         this.prescription = prescription;
     }
     
-    
+    @Override
+    public String toString(){
+        return patientName;
+    }
 }

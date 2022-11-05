@@ -3,10 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import model.Community;
+import static model.Community.communityDirectory;
 import model.Doctor;
 import model.DoctorDirectory;
+import static model.DoctorDirectory.doctorDirectory;
+import model.Hospital;
+import model.HospitalDirectory;
+import static model.HospitalDirectory.hospitalDirectory;
 import model.Patient;
 import model.PatientDirectory;
+import static model.PatientDirectory.patientDirectory;
 import model.Person;
 import model.PersonDirectory;
 /**
@@ -20,6 +27,15 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        PatientDirectory pd = new PatientDirectory();
+    
+        DoctorDirectory dd = new DoctorDirectory();
+        HospitalDirectory hd = new HospitalDirectory();
+        Community c = new Community("Roxbury",02120,"Boston");
+        patientDirectory.add(new Patient("Shubhi Miradwal","shubhi123",23,'F',"shubhimiradwal2304@gmail.com","Boston","O+"));
+        doctorDirectory.add(new Doctor("Dr. Arpita Rai","arpita123","Allergy and Immunology","arpitarai@gmail.com","Boston","Roxbury Community Hospital"));
+        communityDirectory.add(c);
+        hospitalDirectory.add(new Hospital("Roxbury Community Hospital","Roxbury","Boston","MA"));
     }
 
     /**
@@ -32,41 +48,58 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("Welcome to hospital");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnLogin.setBackground(new java.awt.Color(51, 51, 51));
+        btnLogin.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
+        btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(102, 102, 102), null, null));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/icons/hospital3.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("LiHei Pro", 3, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel2.setText("WELCOME!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(206, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(219, 219, 219))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(219, 219, 219)
-                .addComponent(btnLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(315, 315, 315)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(371, 371, 371)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
                 .addComponent(jLabel2)
-                .addGap(47, 47, 47)
-                .addComponent(btnLogin)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,16 +107,16 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -91,7 +124,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
+         this.dispose();
          LoginJFrame login=new LoginJFrame();
                  login.show(true);
                  //Demo.demo();
@@ -138,6 +171,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

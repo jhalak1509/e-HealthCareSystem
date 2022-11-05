@@ -4,6 +4,8 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jhalaksurve
@@ -28,15 +30,39 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         controlPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnHospitals = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        btnCommunities = new javax.swing.JButton();
         workPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Hospitals");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        controlPanel.setBackground(new java.awt.Color(51, 153, 255));
+
+        btnHospitals.setBackground(new java.awt.Color(51, 204, 255));
+        btnHospitals.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnHospitals.setText("Hospitals");
+        btnHospitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnHospitalsActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setBackground(new java.awt.Color(153, 153, 153));
+        btnLogout.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        btnCommunities.setBackground(new java.awt.Color(0, 204, 255));
+        btnCommunities.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnCommunities.setText("Communities");
+        btnCommunities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommunitiesActionPerformed(evt);
             }
         });
 
@@ -45,16 +71,25 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap()
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHospitals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, controlPanelLayout.createSequentialGroup()
+                        .addComponent(btnCommunities)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
-                .addComponent(jButton1)
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addComponent(btnHospitals)
+                .addGap(36, 36, 36)
+                .addComponent(btnCommunities)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addContainerGap())
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -67,7 +102,7 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
         );
         workPanelLayout.setVerticalGroup(
             workPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(workPanel);
@@ -78,7 +113,7 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
+                .addComponent(splitPane)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -92,22 +127,38 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnHospitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalsActionPerformed
         // TODO add your handling code here:
         ManageHospitals mh = new ManageHospitals();
         splitPane.setRightComponent(mh);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnHospitalsActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to logout","Select",JOptionPane.YES_NO_OPTION);
+        if(a == 0){
+        this.dispose();
+        LoginJFrame login = new LoginJFrame();
+        login.setVisible(true);
+    }
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnCommunitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunitiesActionPerformed
+        // TODO add your handling code here:
+        ManageCommunities mc = new ManageCommunities();
+        splitPane.setRightComponent(mc);
+    }//GEN-LAST:event_btnCommunitiesActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -126,16 +177,18 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CommunityAdminDashboard().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCommunities;
+    private javax.swing.JButton btnHospitals;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JPanel controlPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workPanel;
     // End of variables declaration//GEN-END:variables

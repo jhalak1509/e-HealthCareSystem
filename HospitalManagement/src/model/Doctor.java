@@ -17,10 +17,13 @@ public class Doctor {
     private  String doctorEmail;
     private  String doctorCity;
     private  String hospitalName;
-
-    public Doctor(String doctorName, int doctorId, String doctorPassword, String doctorSpecialization, String doctorEmail, String doctorCity, String hospitalName) {
+    static int count = 0;
+    
+    public Doctor(String doctorName, String doctorPassword, String doctorSpecialization, String doctorEmail, String doctorCity, String hospitalName) {
+        
+        count++;
         this.doctorName = doctorName;
-        this.doctorId = doctorId;
+        this.doctorId = count;
         this.doctorPassword = doctorPassword;
         this.doctorSpecialization = doctorSpecialization;
         this.doctorEmail = doctorEmail;

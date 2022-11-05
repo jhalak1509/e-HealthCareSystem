@@ -35,15 +35,17 @@ public class ViewAppointments extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAppointment = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(153, 204, 255));
+
         tblAppointment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient Name", "Patient Age", "Patient Gender", "Reason for visit", "Date", "Time"
+                "Patient Name", "Patient Age", "Patient Gender", "Reason for visit", "Doctor Name", "Hospital Name", "Date", "Time"
             }
         ));
         jScrollPane1.setViewportView(tblAppointment);
@@ -73,7 +75,7 @@ public class ViewAppointments extends javax.swing.JPanel {
         
         pd.addNewPatient("Shubhi Miradwal",1,"shubhi123",23,'F',"shubhimiradwal2304@gmail.com","Boston","O+");
         */
-
+        
         DefaultTableModel model = (DefaultTableModel) tblAppointment.getModel();
         model.setRowCount(0);
         
@@ -88,7 +90,8 @@ public class ViewAppointments extends javax.swing.JPanel {
             row[4] = a.getDate();
             row[5] = a.getTime();
             
-            model.addRow(row);
+            //if(PatientDashboard.txtDoctorName.toString().equals(a.getDoctorName()) /*&& PatientDashboard.txtHospitalName.toString().equals(a.getHospitalName())*/){
+            model.addRow(row);//}
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

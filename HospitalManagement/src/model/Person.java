@@ -15,7 +15,18 @@ public class Person {
     private String personEmail;
     private String personPassword;
     private String role;
-
+    
+    public Person(int personId, String personName, String personEmail, String personPassword, String role){
+    
+        this.personId = personId;
+        this.personName = personName;
+        this.personEmail = personEmail;
+        this.personPassword = personPassword;
+        this.role = role;
+   
+    }
+    
+   
     public int getPersonId() {
         return personId;
     }
@@ -56,14 +67,5 @@ public class Person {
         this.role = role;
     }
     
-    public Person(int personId, String personName, String personEmail, String personPassword, String role){
-    
-        this.personId = personId;
-        this.personName = personName;
-        this.personEmail = personEmail;
-        this.personPassword = personPassword;
-        this.role = role;
-   
-    }
     
 }

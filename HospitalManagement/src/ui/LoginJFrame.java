@@ -22,7 +22,7 @@ import static model.PersonDirectory.personDirectory;
  */
 public class LoginJFrame extends javax.swing.JFrame {
     
-    //PatientDirectory patientDirectory = new PatientDirectory();
+    
     
     
     /**
@@ -30,16 +30,15 @@ public class LoginJFrame extends javax.swing.JFrame {
      */
     public LoginJFrame() {
         initComponents();
-        patientDirectory.add(new Patient("Shubhi Miradwal",1,"shubhi123",23,'F',"shubhimiradwal2304@gmail.com","Boston","O+"));
+       
+        }
         
-        
-        //DoctorDirectory d = new DoctorDirectory();
-        doctorDirectory.add(new Doctor("Dr. Arpita Rai",1,"arpita123","Allergy and Immunology","arpitarai@gmail.com","Boston","Boston Community Hospital"));
-        personDirectory.add(new Person(10,"Jhalak","jhalaksurve@gmail.com","jhalak123","System Admin"));
-        personDirectory.add(new Person(11,"Ashish","ashishshethia@gmail.com","ashish123","Hospital Admin"));
-        personDirectory.add(new Person(12,"Harsh","harshpatil@gmail.com","harsh123","Community Admin"));
-    }
 
+    static boolean isValid(String email) {
+      String regex = "^(.+)@(.+)$";
+     
+      return email.matches(regex);
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,10 +58,14 @@ public class LoginJFrame extends javax.swing.JFrame {
         lblUserId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
         jLabel1.setText("User Type");
 
+        cbUserType.setBackground(new java.awt.Color(102, 153, 255));
         cbUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctor", "System Admin", "Hospital Admin", "Community Admin" }));
         cbUserType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +73,7 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblPassword.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
         lblPassword.setText("Password");
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +82,9 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnLogin.setBackground(new java.awt.Color(51, 51, 255));
+        btnLogin.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,67 +92,65 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblUserId.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblUserId.setText("User Id");
+        lblUserId.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        lblUserId.setText("User Email");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(365, 365, 365)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(217, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUserId)
+                        .addGap(202, 202, 202)
+                        .addComponent(cbUserType, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPassword)
                             .addComponent(jLabel1))
-                        .addGap(137, 137, 137)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbUserType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(btnLogin)))
+                        .addGap(1, 1, 1)
+                        .addComponent(lblUserId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(215, 215, 215))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap(132, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUserId)
                     .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbUserType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addGap(45, 45, 45)
                 .addComponent(btnLogin)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(107, 107, 107))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -164,15 +168,77 @@ public class LoginJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //PatientDirectory p = new PatientDirectory();
         
+        if(txtUserId.getText().trim().isEmpty() || txtPassword.getText().trim().isEmpty())
+           JOptionPane.showMessageDialog(this,"Please enter all the details to continue!!");
+       /*else if(txtUserId.getText().trim().isEmpty())
+           JOptionPane.showMessageDialog(this,"Please enter the user email.");
+       else if(txtUserId.getText().trim().isEmpty())
+           JOptionPane.showMessageDialog(this,"Please enter the user password.");
+       else{*/
+        //if(isValid(txtUserId.getText())){
+        else{
+        PersonDirectory p1 = new PersonDirectory();
+        p1.addNewPerson(10,"Jhalak","jhalaksurve@gmail.com","jhalak123","System Admin");
+        
+        if(cbUserType.getSelectedItem().toString().equals("System Admin")){
+        for(Person temp:p1.getPersonDirectory())
+        {
+            if(txtUserId.getText().equals(temp.getPersonEmail()) && txtPassword.getText().equals(temp.getPersonPassword()) && cbUserType.getSelectedItem().toString().equals(temp.getRole())){
+                
+                    this.dispose();
+                    SystemAdminDashboard sd = new SystemAdminDashboard();
+                    sd.setVisible(true);
+                }
+            else JOptionPane.showMessageDialog(this,"Incorrect details");
+            }
+        }
+        
+        PersonDirectory p2 = new PersonDirectory();
+        p2.addNewPerson(11,"Ashish","ashishshethia@gmail.com","ashish123","Hospital Admin");
+
+        
+        if(cbUserType.getSelectedItem().toString().equals("Hospital Admin")){
+        for(Person temp:p2.getPersonDirectory())
+        {
+            if(txtUserId.getText().equals(temp.getPersonEmail()) && txtPassword.getText().equals(temp.getPersonPassword()) && cbUserType.getSelectedItem().toString().equals(temp.getRole())){
+                
+                    this.dispose();
+                    HospitalAdminDashboard hd = new HospitalAdminDashboard();
+                    hd.setVisible(true);
+                }
+            else JOptionPane.showMessageDialog(this,"Incorrect details");
+            }
+        }
+        
+        PersonDirectory p3 = new PersonDirectory();
+        p3.addNewPerson(12,"Harsh","harshpatil@gmail.com","harsh123","Community Admin");
+    
+        if(cbUserType.getSelectedItem().toString().equals("Community Admin")){
+        for(Person temp:p3.getPersonDirectory())
+        {
+            if(txtUserId.getText().equals(temp.getPersonEmail()) && txtPassword.getText().equals(temp.getPersonPassword()) && cbUserType.getSelectedItem().toString().equals(temp.getRole())){
+                
+                    this.dispose();
+                    CommunityAdminDashboard cd = new CommunityAdminDashboard();
+                    cd.setVisible(true);
+                }
+            else JOptionPane.showMessageDialog(this,"Incorrect details");
+            }
+        }
        
         if(cbUserType.getSelectedItem().toString().equals("Patient")){
         for(Patient temp:patientDirectory)
         {
-            
+            //System.out.println(temp.getPatientEmail());
             if(txtUserId.getText().equals(temp.getPatientEmail()) && txtPassword.getText().equals(temp.getPatientPassword()) && cbUserType.getSelectedItem().toString().equals("Patient")){
                 
+                    this.dispose();
                     PatientDashboard pd = new PatientDashboard();
                     pd.setVisible(true);
+                    
+                    PatientDashboard.txtPatientName.setText(temp.getPatientName());
+                    PatientDashboard.txtPatientAge.setText(String.valueOf(temp.getPatientAge()));
+                    PatientDashboard.txtPatientGender.setText(String.valueOf(temp.getGender()));
                 }
             else JOptionPane.showMessageDialog(this,"Incorrect details");
             }
@@ -182,47 +248,20 @@ public class LoginJFrame extends javax.swing.JFrame {
         {
             if(txtUserId.getText().equals(temp.getDoctorEmail()) && txtPassword.getText().equals(temp.getDoctorPassword()) && cbUserType.getSelectedItem().toString().equals("Doctor")){
                 
+                    this.dispose();
                     DoctorDashboard dd = new DoctorDashboard();
                     dd.setVisible(true);
                 }
             else JOptionPane.showMessageDialog(this,"Incorrect details");
             }
         }
-        if(cbUserType.getSelectedItem().toString().equals("System Admin")){
-        for(Person temp:personDirectory)
-        {
-            if(txtUserId.getText().equals(temp.getPersonEmail()) && txtPassword.getText().equals(temp.getPersonPassword()) && cbUserType.getSelectedItem().toString().equals(temp.getRole())){
-                
-                    SystemAdminDashboard sd = new SystemAdminDashboard();
-                    sd.setVisible(true);
-                }
-            else JOptionPane.showMessageDialog(this,"Incorrect details");
-            }
-        }
-        if(cbUserType.getSelectedItem().toString().equals("Hospital Admin")){
-        for(Person temp:personDirectory)
-        {
-            if(txtUserId.getText().equals(temp.getPersonEmail()) && txtPassword.getText().equals(temp.getPersonPassword()) && cbUserType.getSelectedItem().toString().equals(temp.getRole())){
-                
-                    HospitalAdminDashboard hd = new HospitalAdminDashboard();
-                    hd.setVisible(true);
-                }
-            else JOptionPane.showMessageDialog(this,"Incorrect details");
-            }
-        }
-        if(cbUserType.getSelectedItem().toString().equals("Community Admin")){
-        for(Person temp:personDirectory)
-        {
-            if(txtUserId.getText().equals(temp.getPersonEmail()) && txtPassword.getText().equals(temp.getPersonPassword()) && cbUserType.getSelectedItem().toString().equals(temp.getRole())){
-                
-                    CommunityAdminDashboard cd = new CommunityAdminDashboard();
-                    cd.setVisible(true);
-                }
-            else JOptionPane.showMessageDialog(this,"Incorrect details");
-            }
-        }
+        //}else JOptionPane.showMessageDialog(this,"The email id is not valid!!");
+        } 
+        
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    //else JOptionPane.showMessageDialog(this,"Please enter correct email id.");
+      // }
+    
     
     /**
      * @param args the command line arguments

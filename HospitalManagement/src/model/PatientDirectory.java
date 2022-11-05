@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class PatientDirectory {
     public static ArrayList<Patient> patientDirectory = new ArrayList<Patient>();
     
-    public static void addNewPatient(String patientName, int patientId, String patientPassword, int patientAge, char patientGender, String patientEmail, String patientCity, String bloodGroup){
+    /*public static void addNewPatient(String patientName, int patientId, String patientPassword, int patientAge, char patientGender, String patientEmail, String patientCity, String bloodGroup){
         //Patient newPatient = new Patient(patientName,patientId,patientPassword,patientAge,patientGender,patientEmail,patientCity,bloodGroup);   
         patientDirectory.add(new Patient(patientName,patientId,patientPassword,patientAge,patientGender,patientEmail,patientCity,bloodGroup));
         
-    }
+    }*/
     public PatientDirectory(){        
     this.patientDirectory = new ArrayList<Patient>();
     }
@@ -38,6 +38,9 @@ public class PatientDirectory {
         patientDirectory.add(newPatient);
         return newPatient;
     }*/
+        
+
+    
 }
 
 

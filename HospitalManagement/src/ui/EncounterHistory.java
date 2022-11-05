@@ -4,6 +4,14 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Doctor;
+import static model.DoctorDirectory.doctorDirectory;
+import model.Encounter;
+import static model.EncounterHistory.encounterHistory;
+import model.Hospital;
+
 /**
  *
  * @author jhalaksurve
@@ -15,6 +23,8 @@ public class EncounterHistory extends javax.swing.JPanel {
      */
     public EncounterHistory() {
         initComponents();
+        
+        populateTable();
     }
 
     /**
@@ -34,23 +44,31 @@ public class EncounterHistory extends javax.swing.JPanel {
         txtSymptoms = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtPrescription = new javax.swing.JTextArea();
-        btnLogout = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 204, 255));
 
         tblEncounterHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Patient Name", "Age", "Gender", "Date", "Temperature", "Pulse Rate", "Respiration Rate", "Blood Pressure", "Symptoms", "Prescription Given"
+                "Patient Name", "Age", "Gender", "Date", "Symptoms", "Prescription Given"
             }
         ));
+        tblEncounterHistory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEncounterHistoryMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblEncounterHistory);
 
+        lblSymptoms.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblSymptoms.setText("Symptoms");
 
+        lblPrescription.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblPrescription.setText("Prescription");
 
         txtSymptoms.setColumns(20);
@@ -60,8 +78,6 @@ public class EncounterHistory extends javax.swing.JPanel {
         txtPrescription.setColumns(20);
         txtPrescription.setRows(5);
         jScrollPane3.setViewportView(txtPrescription);
-
-        btnLogout.setText("Logout");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,20 +93,14 @@ public class EncounterHistory extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95)
                 .addComponent(lblPrescription)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +113,43 @@ public class EncounterHistory extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblEncounterHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEncounterHistoryMouseClicked
+        // TODO add your handling code here:
+        int selectedRowIndex = tblEncounterHistory.getSelectedRow();
+        if (selectedRowIndex<0){
+        JOptionPane.showMessageDialog(this, "Select the row you want to DELETE");
+        return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblEncounterHistory.getModel();
+        Encounter selectedEncounter;  
+         selectedEncounter = (Encounter) model.getValueAt(selectedRowIndex, 0);
+         txtSymptoms.setText(selectedEncounter.getSymptoms());
+         txtPrescription.setText(selectedEncounter.getPrescription());
+         
+         
+    }//GEN-LAST:event_tblEncounterHistoryMouseClicked
 
+    private void populateTable(){
+    
+        DefaultTableModel model = (DefaultTableModel) tblEncounterHistory.getModel();
+        model.setRowCount(0);
+        
+        for(Encounter e : encounterHistory){
+        
+            Object[] row = new Object[10];
+            
+            row[0] = e;
+            row[1] = e.getPatientAge();
+            row[2] = e.getPatientGender();
+            row[3] = e.getDate();
+            //row[4] = e.getVitalSigns();
+            row[4] = e.getSymptoms();
+            row[5] = e.getPrescription();
+            
+            model.addRow(row);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogout;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

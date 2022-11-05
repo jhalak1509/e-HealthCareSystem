@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="splitPane" pref="875" max="32767" attributes="0"/>
+              <Component id="splitPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -46,6 +46,11 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="controlPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
@@ -56,8 +61,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnHospitals" max="32767" attributes="0"/>
+                          <Component id="btnLogout" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnCommunities" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -66,19 +78,57 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="362" max="32767" attributes="0"/>
+                      <Component id="btnHospitals" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnCommunities" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="263" max="32767" attributes="0"/>
+                      <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnHospitals">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="cc" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Hospitals"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalsActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnLogout">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="99" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCommunities">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="cc" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Communities"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCommunitiesActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -98,7 +148,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="518" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="540" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

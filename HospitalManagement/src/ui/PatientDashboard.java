@@ -4,6 +4,8 @@
  */
 package ui;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +17,7 @@ import static model.DoctorDirectory.doctorDirectory;
 import ui.ManageDoctors;
 import model.AppointmentHistory;
 import static model.AppointmentHistory.appointmentHistory;
+import model.Patient;
 
 /**
  *
@@ -24,6 +27,7 @@ public class PatientDashboard extends javax.swing.JFrame {
     
     //DoctorDirectory dd = new DoctorDirectory();
     AppointmentHistory ah = new AppointmentHistory();
+    Patient p;
     /**
      * Creates new form PatientDashboard
      */
@@ -33,6 +37,22 @@ public class PatientDashboard extends javax.swing.JFrame {
         populateTable();
     }
 
+    public  boolean isValidDate(String date)
+    {
+        String regex = "^(1[0-2]|0[1-9])/(3[01]"
+                       + "|[12][0-9]|0[1-9])/[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher((CharSequence)date);
+        return matcher.matches();
+    }
+    
+    public static boolean isTimeValid(String time) {
+        String regex
+                = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(time);
+        return matcher.matches();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,10 +85,15 @@ public class PatientDashboard extends javax.swing.JFrame {
         lblHospitalName = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
-        cbPatientGender = new javax.swing.JComboBox<>();
+        txtPatientGender = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 153, 255));
 
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+
+        lblHeading.setBackground(new java.awt.Color(153, 204, 255));
+        lblHeading.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 24)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("List of Doctors Nearby");
 
@@ -83,6 +108,8 @@ public class PatientDashboard extends javax.swing.JFrame {
                 "Doctor Name", "Specialization", "Hospital name", "City"
             }
         ));
+        tblDoctorsNearby.setColumnSelectionAllowed(true);
+        tblDoctorsNearby.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblDoctorsNearby.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDoctorsNearbyMouseClicked(evt);
@@ -95,6 +122,15 @@ public class PatientDashboard extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDoctorsNearby);
 
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
+        btnSearch.setBackground(new java.awt.Color(0, 102, 255));
+        btnSearch.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 12)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -102,29 +138,32 @@ public class PatientDashboard extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch))
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblHeading)
-                        .addGap(135, 135, 135))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addGap(228, 228, 228)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnSearch))
+                            .addComponent(lblHeading))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addComponent(lblHeading)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         txtPatientAge.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +172,9 @@ public class PatientDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnBookAppointment.setBackground(new java.awt.Color(102, 102, 102));
+        btnBookAppointment.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 12)); // NOI18N
+        btnBookAppointment.setForeground(new java.awt.Color(255, 255, 255));
         btnBookAppointment.setText("Book Appointment");
         btnBookAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +182,9 @@ public class PatientDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnLogout.setBackground(new java.awt.Color(102, 102, 102));
+        btnLogout.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 12)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,23 +192,29 @@ public class PatientDashboard extends javax.swing.JFrame {
             }
         });
 
+        lblPatientName.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblPatientName.setText("Patient Name");
 
+        lblPatientAge.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblPatientAge.setText("Patient Age");
 
+        lblPatientGender.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblPatientGender.setText("Patient Gender");
 
+        lblReason.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblReason.setText("Reason for visit");
 
+        lblDoctorName.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblDoctorName.setText("Doctor Name");
 
+        lblHospitalName.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblHospitalName.setText("Hospital Name");
 
+        lblDate.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblDate.setText("Date");
 
+        lblTime.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblTime.setText("Time");
-
-        cbPatientGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +242,7 @@ public class PatientDashboard extends javax.swing.JFrame {
                                         .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblReason)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                                         .addComponent(txtReason, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblDoctorName)
@@ -210,14 +261,14 @@ public class PatientDashboard extends javax.swing.JFrame {
                                             .addComponent(lblPatientAge)
                                             .addComponent(lblPatientGender))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtPatientAge, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                            .addComponent(txtPatientGender))))
                                 .addGap(17, 17, 17))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBookAppointment)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(120, 120, 120))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +287,7 @@ public class PatientDashboard extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPatientGender)
-                    .addComponent(cbPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,7 +308,7 @@ public class PatientDashboard extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTime))
-                .addGap(45, 45, 45)
+                .addGap(44, 44, 44)
                 .addComponent(btnBookAppointment)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -271,12 +322,18 @@ public class PatientDashboard extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to logout","Select",JOptionPane.YES_NO_OPTION);
+        if(a == 0){
+        this.dispose();
+        LoginJFrame login = new LoginJFrame();
+        login.setVisible(true);
+    }
+        
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void tblDoctorsNearbyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDoctorsNearbyKeyPressed
         // TODO add your handling code here:
-        String query = txtSearch.getText();
-        filter(query);
+       
     }//GEN-LAST:event_tblDoctorsNearbyKeyPressed
 
     private void tblDoctorsNearbyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctorsNearbyMouseClicked
@@ -293,6 +350,7 @@ public class PatientDashboard extends javax.swing.JFrame {
          txtDoctorName.setText(selectedDoctor.getDoctorName());
          txtHospitalName.setText(selectedDoctor.getHospitalName());
         
+         
         
     }//GEN-LAST:event_tblDoctorsNearbyMouseClicked
 
@@ -302,13 +360,18 @@ public class PatientDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         String patientName = txtPatientName.getText();
         int patientAge = Integer.parseInt(txtPatientAge.getText());
-        char patientGender = cbPatientGender.getSelectedItem().toString().charAt(0);
+        char patientGender = txtPatientGender.getText().charAt(0);
         String reason = txtReason.getText();
         String doctorName = txtDoctorName.getText();
         String hospitalName = txtHospitalName.getText();
         String date = txtDate.getText();
         String time = txtTime.getText();
         
+        if(patientName.isEmpty() || txtPatientAge.getText().isEmpty() || reason.isEmpty() || doctorName.isEmpty() || hospitalName.isEmpty() || hospitalName.isEmpty() || date.isEmpty() || time.isEmpty())
+            JOptionPane.showMessageDialog(this,"Please enter all the details");
+        else{
+        if(isValidDate(date)){
+            if(isTimeValid(time)){
         appointmentHistory.add(new Appointment(patientName,patientAge,patientGender,reason,doctorName,hospitalName,date,time));
         
         JOptionPane.showMessageDialog(this,"New Appointment added");
@@ -320,14 +383,26 @@ public class PatientDashboard extends javax.swing.JFrame {
         txtHospitalName.setText(" ");
         txtDate.setText(" ");
         txtTime.setText(" ");
+        }else
+                JOptionPane.showMessageDialog(this,"Please enter time in 24 hours format");
+        }else
+            JOptionPane.showMessageDialog(this,"Please enter valid date in mm/dd/yyyy format");
     }//GEN-LAST:event_btnBookAppointmentActionPerformed
-
-    private void filter(String query){
+    }
+    
+     private void filter(String query){
         DefaultTableModel model = (DefaultTableModel) tblDoctorsNearby.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         tblDoctorsNearby.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
-    }
+    }    
+     
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+         String query = txtSearch.getText();
+        filter(query);
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     
     
     
@@ -390,7 +465,6 @@ public class PatientDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnBookAppointment;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> cbPatientGender;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDate;
@@ -404,10 +478,11 @@ public class PatientDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblTime;
     private javax.swing.JTable tblDoctorsNearby;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtDoctorName;
-    private javax.swing.JTextField txtHospitalName;
-    private javax.swing.JTextField txtPatientAge;
-    private javax.swing.JTextField txtPatientName;
+    public static javax.swing.JTextField txtDoctorName;
+    public static javax.swing.JTextField txtHospitalName;
+    public static javax.swing.JTextField txtPatientAge;
+    public static javax.swing.JTextField txtPatientGender;
+    public static javax.swing.JTextField txtPatientName;
     private javax.swing.JTextField txtReason;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTime;

@@ -16,7 +16,7 @@ public class DoctorDirectory {
     
     public static void addNewDoctor(String doctorName, int doctorId, String doctorPassword, String doctorSpecialization, String doctorEmail, String doctorCity, String hospitalName){
        // Doctor newDoctor = new Doctor(doctorName,doctorId,doctorPassword,doctorSpecialization,doctorEmail,doctorCity,hospitalId);    
-        doctorDirectory.add(new Doctor(doctorName,doctorId,doctorPassword,doctorSpecialization,doctorEmail,doctorCity,hospitalName));
+        doctorDirectory.add(new Doctor(doctorName,doctorPassword,doctorSpecialization,doctorEmail,doctorCity,hospitalName));
         
     }
     

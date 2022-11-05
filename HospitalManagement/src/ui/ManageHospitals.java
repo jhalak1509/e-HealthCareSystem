@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.Community;
+import static model.Community.communityDirectory;
 import model.Doctor;
 import static model.DoctorDirectory.doctorDirectory;
 import model.Hospital;
@@ -19,8 +21,10 @@ import static model.HospitalDirectory.hospitalDirectory;
  * @author jhalaksurve
  */
 public class ManageHospitals extends javax.swing.JPanel {
+    
+    int flag = 0;
 
-    HospitalDirectory hd = new HospitalDirectory();
+    HospitalDirectory hd ;//= new HospitalDirectory();
     /**
      * Creates new form ManageHospitals
      */
@@ -39,10 +43,8 @@ public class ManageHospitals extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtHospitalId = new javax.swing.JTextField();
         lblState = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        lblHospitalId = new javax.swing.JLabel();
         txtHospitalName = new javax.swing.JTextField();
         lblCommunity = new javax.swing.JLabel();
         lblHospitalName = new javax.swing.JLabel();
@@ -56,10 +58,15 @@ public class ManageHospitals extends javax.swing.JPanel {
         tblHospital = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
-        btnLogout = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 204, 255));
+
+        lblState.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblState.setText("State");
 
+        btnSearch.setBackground(new java.awt.Color(0, 153, 255));
+        btnSearch.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,12 +74,15 @@ public class ManageHospitals extends javax.swing.JPanel {
             }
         });
 
-        lblHospitalId.setText("Hospital ID");
-
+        lblCommunity.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblCommunity.setText("Community");
 
+        lblHospitalName.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblHospitalName.setText("Hospital Name");
 
+        btnUpdate.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdate.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +90,9 @@ public class ManageHospitals extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(0, 153, 255));
+        btnDelete.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +100,9 @@ public class ManageHospitals extends javax.swing.JPanel {
             }
         });
 
+        btnAdd.setBackground(new java.awt.Color(0, 153, 255));
+        btnAdd.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +110,7 @@ public class ManageHospitals extends javax.swing.JPanel {
             }
         });
 
+        lblCity.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblCity.setText("City");
 
         txtState.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +130,7 @@ public class ManageHospitals extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Hospital ID", "Hospital Name", "Community", "City", "State"
+                "Hospital Name", "Hospital Id", "Community", "City", "State"
             }
         ));
         tblHospital.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,7 +145,11 @@ public class ManageHospitals extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblHospital);
 
-        btnLogout.setText("Logout");
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,57 +169,43 @@ public class ManageHospitals extends javax.swing.JPanel {
                                 .addComponent(btnAdd))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblState)
-                                    .addComponent(lblHospitalId)
-                                    .addComponent(lblCommunity))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtHospitalId)
-                                    .addComponent(txtState, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                                    .addComponent(txtCommunity))))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblHospitalName)
-                                    .addComponent(lblCity))
-                                .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtHospitalName, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                                    .addComponent(txtCity))
-                                .addGap(0, 194, Short.MAX_VALUE))
+                                    .addComponent(lblState))
+                                .addGap(84, 84, 84)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(116, 116, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSearch))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnLogout)))
+                                .addComponent(lblCity)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCommunity)
+                                .addGap(77, 77, 77)
+                                .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearch)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout)
-                .addGap(26, 26, 26)
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHospitalId)
-                    .addComponent(txtHospitalId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHospitalName)
-                    .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCity)
-                    .addComponent(lblCommunity)
                     .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(lblCommunity)
+                    .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHospitalName))
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblState)
-                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCity))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
@@ -218,23 +225,34 @@ public class ManageHospitals extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
 
-       int hospitalId = Integer.parseInt(txtHospitalId.getText());
+       //int hospitalId = Integer.parseInt(txtHospitalId.getText());
         String hospitalName = txtHospitalName.getText();
         String community = txtCommunity.getText();
         String city = txtCity.getText();
         String state = txtState.getText();
         
-        hospitalDirectory.add(new Hospital(hospitalId, hospitalName, community, city, state));
+        if(txtHospitalName.getText().isEmpty() || txtCommunity.getText().isEmpty() || txtCity.getText().isEmpty() || txtState.getText().isEmpty())
+            JOptionPane.showMessageDialog(this,"Please enter all the details!!");
+        else{ 
+        for(Community c : communityDirectory){
+        if(c.getCommunityName().equals(community)){
+            flag = 1;
+        }
+        }
+        if(flag == 1){
+        hospitalDirectory.add(new Hospital( hospitalName, community, city, state));
         
         JOptionPane.showMessageDialog(this,"New Hospital added");
 
         populateTable();
 
-        txtHospitalId.setText("");
+        //txtHospitalId.setText("");
         txtHospitalName.setText("");
         txtCommunity.setText("");
         txtCity.setText("");
         txtState.setText("");
+        }else JOptionPane.showMessageDialog(this,"Community doesn't exist");
+        }
         
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -254,7 +272,7 @@ public class ManageHospitals extends javax.swing.JPanel {
         Hospital selectedHospital;  
          selectedHospital= (Hospital) model.getValueAt(selectedRowIndex, 0);
          txtHospitalName.setText(selectedHospital.getHospitalName());
-         txtHospitalId.setText(String.valueOf(selectedHospital.getHospitalId()));
+         //txtHospitalId.setText(String.valueOf(selectedHospital.getHospitalId()));
          txtCommunity.setText(selectedHospital.getHospitalCommunity());
          txtCity.setText(selectedHospital.getHospitalCity());
          txtState.setText(selectedHospital.getHospitalState());
@@ -269,21 +287,24 @@ public class ManageHospitals extends javax.swing.JPanel {
         if(tblHospital.getSelectedRowCount()==1){
            
      String name= txtHospitalName.getText();
-     int id = Integer.parseInt(txtHospitalId.getText());
+//     int id = Integer.parseInt(txtHospitalId.getText());
      String community = txtCommunity.getText();
      String city = txtCity.getText();
      String state = txtState.getText();
      
-     
+     if(txtHospitalName.getText().isEmpty() || txtCommunity.getText().isEmpty() || txtCity.getText().isEmpty() || txtState.getText().isEmpty())
+            JOptionPane.showMessageDialog(this,"Please enter all the details!!");
+        else{ 
      
      tm.setValueAt(name, tblHospital.getSelectedRow(),0);
-     tm.setValueAt(id, tblHospital.getSelectedRow(),1);
+    // tm.setValueAt(id, tblHospital.getSelectedRow(),1);
      tm.setValueAt(community, tblHospital.getSelectedRow(),2);
      tm.setValueAt(city, tblHospital.getSelectedRow(),3);
      tm.setValueAt(state, tblHospital.getSelectedRow(),4);
      
      
      JOptionPane.showMessageDialog(this, "Updated Successfully");
+     }
      //populateTable();
         }
         else{
@@ -316,7 +337,7 @@ public class ManageHospitals extends javax.swing.JPanel {
         Hospital selectedDHospital = (Hospital)model.getValueAt(selectedRowIndex, 0);
         hd.deleteHospital(selectedDHospital);
         
-        txtHospitalId.setText("");
+        //txtHospitalId.setText("");
         txtHospitalName.setText("");
         txtCommunity.setText("");
         txtCity.setText("");
@@ -328,6 +349,12 @@ public class ManageHospitals extends javax.swing.JPanel {
         populateTable();
         
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String query = txtSearch.getText();
+        filter(query);
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     private void filter(String query){
         DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
@@ -364,19 +391,16 @@ public class ManageHospitals extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCommunity;
-    private javax.swing.JLabel lblHospitalId;
     private javax.swing.JLabel lblHospitalName;
     private javax.swing.JLabel lblState;
     private javax.swing.JTable tblHospital;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtCommunity;
-    private javax.swing.JTextField txtHospitalId;
     private javax.swing.JTextField txtHospitalName;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtState;

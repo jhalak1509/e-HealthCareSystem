@@ -19,10 +19,14 @@ public class Patient {
     private String patientCity;
     private String bloodGroup;
 
-    public Patient(String patientName, int patientId, String patientPassword, int patientAge, char patientGender, String patientEmail, String patientCity, String bloodGroup){
+    static int count = 0;
     
+    public Patient(String patientName,String patientPassword, int patientAge, char patientGender, String patientEmail, String patientCity, String bloodGroup){
+    
+        
+        count++;
         this.patientName = patientName;
-        this.patientId = patientId;
+        this.patientId = count;
         this.patientPassword = patientPassword;
         this.patientAge = patientAge;
         this.patientGender = patientGender;

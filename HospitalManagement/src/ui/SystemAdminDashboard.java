@@ -4,6 +4,7 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import model.PatientDirectory;
 
 /**
@@ -37,10 +38,15 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         btnDoctors = new javax.swing.JButton();
         btnPatients = new javax.swing.JButton();
         btnHospitals = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         workPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        controlPanel.setBackground(new java.awt.Color(51, 153, 255));
+
+        btnDoctors.setBackground(new java.awt.Color(51, 204, 255));
+        btnDoctors.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
         btnDoctors.setText("Doctors");
         btnDoctors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +54,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnPatients.setBackground(new java.awt.Color(51, 204, 255));
+        btnPatients.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
         btnPatients.setText("Patients");
         btnPatients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +63,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnHospitals.setBackground(new java.awt.Color(51, 204, 255));
+        btnHospitals.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
         btnHospitals.setText("Hospitals");
         btnHospitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,16 +72,26 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 14)); // NOI18N
+        jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnHospitals, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPatients, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDoctors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDoctors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
@@ -83,7 +103,9 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                 .addComponent(btnPatients)
                 .addGap(38, 38, 38)
                 .addComponent(btnHospitals)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(31, 31, 31))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -92,7 +114,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         workPanel.setLayout(workPanelLayout);
         workPanelLayout.setHorizontalGroup(
             workPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 883, Short.MAX_VALUE)
         );
         workPanelLayout.setVerticalGroup(
             workPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,6 +160,16 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         splitPane.setRightComponent(mb);
     }//GEN-LAST:event_btnPatientsActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to logout","Select",JOptionPane.YES_NO_OPTION);
+        if(a == 0){
+        this.dispose();
+        LoginJFrame login = new LoginJFrame();
+        login.setVisible(true);
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +211,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnHospitals;
     private javax.swing.JButton btnPatients;
     private javax.swing.JPanel controlPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workPanel;
     // End of variables declaration//GEN-END:variables

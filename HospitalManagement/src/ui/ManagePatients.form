@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="cc" red="99" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -21,73 +26,66 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblPatientCity" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="62" max="32767" attributes="0"/>
-                              <Component id="txtPatientCity" min="-2" pref="161" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblPatientEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPatientId" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txtPassword" min="-2" pref="161" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="lblPatientName" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                                      <Component id="txtPatientName" min="-2" pref="161" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtPatientId" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPatientEmail" alignment="0" pref="161" max="32767" attributes="0"/>
-                                  <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
+                              <EmptySpace min="112" pref="112" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblPatientCity" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="txtPatientCity" min="-2" pref="161" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblPatientEmail" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="txtPatientEmail" min="-2" pref="161" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblPatientName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPatientGender" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtPatientName" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbPatientGender" alignment="0" pref="161" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblPatientAge" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblBloodGroup" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtPatientAge" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtBloodGroup" alignment="0" pref="161" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPatientGender" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPatientAge" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBloodGroup" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="190" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbPatientGender" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                                  <Component id="txtPatientAge" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                                  <Component id="txtBloodGroup" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtSearch" min="-2" pref="109" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtSearch" min="-2" pref="109" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -97,37 +95,40 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPatientId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPatientId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPatientAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPatientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPatientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPatientAge" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtPatientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="lblPatientEmail" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPatientCity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPatientCity" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -145,6 +146,15 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnAdd">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
       <Events>
@@ -165,11 +175,23 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPatientEmail">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patient Email"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
@@ -178,16 +200,31 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPatientCity">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patient City"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPassword">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patient Password"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdate">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
       <Events>
@@ -196,6 +233,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
       <Events>
@@ -227,6 +273,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tblPatient">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Adelle Sans Devanagari" size="12" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="7" rowCount="7">
                 <Column editable="true" title="Patient Name" type="java.lang.Object"/>
@@ -287,22 +336,21 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtPatientId">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblBloodGroup">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Blood Group"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPatientId">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Patient ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPatientName">
     </Component>
     <Component class="javax.swing.JLabel" name="lblPatientName">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patient Name"/>
       </Properties>
     </Component>
@@ -312,11 +360,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPatientAge">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patient Age"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPatientGender">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Adelle Sans Devanagari" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patient Gender "/>
       </Properties>
     </Component>
@@ -324,11 +378,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnLogout">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Logout"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
