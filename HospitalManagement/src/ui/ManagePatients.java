@@ -170,6 +170,12 @@ public class ManagePatients extends javax.swing.JPanel {
         lblPatientName.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblPatientName.setText("Patient Name");
 
+        txtPatientAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPatientAgeKeyPressed(evt);
+            }
+        });
+
         lblPatientAge.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         lblPatientAge.setText("Patient Age");
 
@@ -453,6 +459,17 @@ public class ManagePatients extends javax.swing.JPanel {
         String query = txtSearch.getText();
         filter(query);
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void txtPatientAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPatientAgeKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch)){
+            txtPatientAge.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtPatientAge.setEditable(true);
+    }//GEN-LAST:event_txtPatientAgeKeyPressed
     
     private void populateTable(){
         

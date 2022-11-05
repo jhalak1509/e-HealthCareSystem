@@ -135,6 +135,12 @@ public class ManageCommunities extends javax.swing.JPanel {
             }
         });
 
+        txtZipCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtZipCodeKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,6 +333,17 @@ public class ManageCommunities extends javax.swing.JPanel {
         populateTable();
 
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtZipCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtZipCodeKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch)){
+            txtZipCode.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtZipCode.setEditable(true);
+    }//GEN-LAST:event_txtZipCodeKeyPressed
 
 
     private void populateTable(){

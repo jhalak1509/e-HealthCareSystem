@@ -76,15 +76,38 @@ public class AddEncounter extends javax.swing.JPanel {
                 txtTemperatureActionPerformed(evt);
             }
         });
+        txtTemperature.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTemperatureKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         jLabel3.setText("Pulse Rate");
 
+        txtPulseRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPulseRateKeyPressed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         jLabel4.setText("Respiration Rate");
 
+        txtRespirationRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtRespirationRateKeyPressed(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         jLabel5.setText("Blood Pressure");
+
+        txtBloodPressure.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBloodPressureKeyPressed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Adelle Sans Devanagari", 3, 18)); // NOI18N
         jLabel6.setText("Patient Details");
@@ -94,6 +117,12 @@ public class AddEncounter extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 14)); // NOI18N
         jLabel8.setText("Patient Age");
+
+        txtPatientAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPatientAgeKeyPressed(evt);
+            }
+        });
 
         cbPatientGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M" }));
 
@@ -296,6 +325,62 @@ public class AddEncounter extends javax.swing.JPanel {
          else JOptionPane.showMessageDialog(this,"Please enter valid date");
         }
     }//GEN-LAST:event_btnAddEncounterActionPerformed
+
+    private void txtTemperatureKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemperatureKeyPressed
+        // TODO add your handling code here:
+        
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            txtTemperature.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtTemperature.setEditable(true);
+    }//GEN-LAST:event_txtTemperatureKeyPressed
+
+    private void txtPulseRateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPulseRateKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            txtPulseRate.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtPulseRate.setEditable(true);
+    }//GEN-LAST:event_txtPulseRateKeyPressed
+
+    private void txtRespirationRateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRespirationRateKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            txtRespirationRate.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtRespirationRate.setEditable(true);
+    }//GEN-LAST:event_txtRespirationRateKeyPressed
+
+    private void txtBloodPressureKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBloodPressureKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            txtBloodPressure.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtBloodPressure.setEditable(true);
+    }//GEN-LAST:event_txtBloodPressureKeyPressed
+
+    private void txtPatientAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPatientAgeKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c)){
+            txtPatientAge.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Please enter number only");
+        }
+        else
+            txtPatientAge.setEditable(true);
+    }//GEN-LAST:event_txtPatientAgeKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

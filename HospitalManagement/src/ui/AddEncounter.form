@@ -161,6 +161,7 @@
     <Component class="javax.swing.JTextField" name="txtTemperature">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTemperatureActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTemperatureKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -172,6 +173,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPulseRate">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPulseRateKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -182,6 +186,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRespirationRate">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRespirationRateKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -192,6 +199,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBloodPressure">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBloodPressureKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -220,6 +230,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPatientAge">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPatientAgeKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbPatientGender">
       <Properties>
