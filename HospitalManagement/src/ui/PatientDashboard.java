@@ -378,6 +378,7 @@ public class PatientDashboard extends javax.swing.JFrame {
         
         txtPatientName.setText(" ");
         txtPatientAge.setText(" ");
+        txtPatientGender.setText("");
         txtReason.setText(" ");
         txtDoctorName.setText(" ");
         txtHospitalName.setText(" ");

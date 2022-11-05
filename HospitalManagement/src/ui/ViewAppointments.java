@@ -87,8 +87,10 @@ public class ViewAppointments extends javax.swing.JPanel {
             row[1] = a.getPatientAge();
             row[2] = a.getPatientGender();
             row[3] = a.getReason();
-            row[4] = a.getDate();
-            row[5] = a.getTime();
+            row[4] = a.getDoctorName();
+            row[5] = a.getHospitalName();
+            row[6] = a.getDate();
+            row[7] = a.getTime();
             
             //if(PatientDashboard.txtDoctorName.toString().equals(a.getDoctorName()) /*&& PatientDashboard.txtHospitalName.toString().equals(a.getHospitalName())*/){
             model.addRow(row);//}
